@@ -38,7 +38,8 @@ export const integration = defineIntegration({
 					const outFile = fileURLToPath(new URL(`./\.well-known`, dir));
 					await mkdir(outFile);
 					await writeFile(outFile + '/url122.json', jsonString);
-					logger.info(`URL122 ids writtem to ${outFile}\\url122.json`);
+					logger.info(`URL122 ids written to ${outFile}\\url122.json!`);
+					logger.info("URL122 Finished!");
 				}
 			},
 		};
