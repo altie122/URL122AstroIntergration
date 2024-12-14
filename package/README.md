@@ -1,27 +1,27 @@
-# `package-name`
+# `@url122/astro`
 
-This is an [Astro integration](https://docs.astro.build/en/guides/integrations-guide/) that TODO:description
+This is an [Astro integration](https://docs.astro.build/en/guides/integrations-guide/) that generates id's for the url122.xyz site to use.
 
 ## Usage
 
 ### Prerequisites
 
-TODO:
+An astro project
 
 ### Installation
 
 Install the integration **automatically** using the Astro CLI:
 
 ```bash
-pnpm astro add package-name
+pnpm astro add @url122/astro
 ```
 
 ```bash
-npx astro add package-name
+npx astro add @url122/astro
 ```
 
 ```bash
-yarn astro add package-name
+yarn astro add @url122/astro
 ```
 
 Or install it **manually**:
@@ -29,21 +29,21 @@ Or install it **manually**:
 1. Install the required dependencies
 
 ```bash
-pnpm add package-name
+pnpm add @url122/astro
 ```
 
 ```bash
-npm install package-name
+npm install @url122/astro
 ```
 
 ```bash
-yarn add package-name
+yarn add @url122/astro
 ```
 
 2. Add the integration to your astro config
 
 ```diff
-+import integration from "package-name";
++import integration from "@url122/astro";
 
 export default defineConfig({
   integrations: [
@@ -54,8 +54,10 @@ export default defineConfig({
 
 ### Configuration
 
-TODO:configuration
-
+There is one configuration option called "idPrefix" you MUST have it for the intergration to work.
+```
+idPrefix: String; // this MUST be 3 char's long
+```
 ## Contributing
 
 This package is structured as a monorepo:
@@ -81,6 +83,6 @@ You can now edit files in `package`. Please note that making changes to those fi
 
 [MIT Licensed](https://github.com/altie122/URL122AstroIntergration/blob/main/LICENSE). Made with ❤️ by [Altie122](https://github.com/altie122).
 
-## Acknowledgements
+<!-- ## Acknowledgements
 
-TODO:
+TODO: -->
