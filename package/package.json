@@ -1,11 +1,10 @@
 {
-	"name": "package-name",
+	"name": "@url122/astro",
 	"version": "0.0.0",
-	"description": "TODO:",
+	"description": "An Astro integration for generating URL122 ids",
 	"author": {
-		"email": "TODO:",
-		"name": "TODO:",
-		"url": "TODO:"
+		"name": "Altie122",
+		"url": "https://github.com/altie122"
 	},
 	"license": "MIT",
 	"keywords": [
@@ -13,9 +12,17 @@
 		"astro-component",
 		"withastro",
 		"astro",
-		"TODO:"
+		"URL122"
 	],
-	"homepage": "TODO:",
+	"homepage": "https://docs.url122.xyz/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/altie122/URL122AstroIntergration.git",
+		"directory": "package"
+	},
+	"bugs": {
+		"url": "https://github.com/altie122/URL122AstroIntergration/issues"
+	},
 	"publishConfig": {
 		"access": "public"
 	},

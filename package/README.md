@@ -79,7 +79,7 @@ You can now edit files in `package`. Please note that making changes to those fi
 
 ## Licensing
 
-[MIT Licensed](https://github.com/TODO:/blob/main/LICENSE). Made with ❤️ by [TODO:](https://github.com/TODO:).
+[MIT Licensed](https://github.com/altie122/URL122AstroIntergration/blob/main/LICENSE). Made with ❤️ by [Altie122](https://github.com/altie122).
 
 ## Acknowledgements
 
