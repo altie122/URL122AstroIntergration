@@ -1,6 +1,5 @@
 ---
 "@url122/astro": major
-"playground": patch
 ---
 
 3 new options
