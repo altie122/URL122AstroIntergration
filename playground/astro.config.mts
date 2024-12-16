@@ -10,12 +10,10 @@ export default defineConfig({
 	site: "https://example.com/",
 	integrations: [
 		tailwind(),
-		url122(
-			{
-				idPrefix: "exa",
-				extraPages: ["https://example.com/extra-page", "/extra-page-2"],
-			}
-		),
+		url122({
+			idPrefix: "exa",
+			subPrefix: "this is a sub-prefix",
+		}),
 		hmrIntegration({
 			directory: createResolver(import.meta.url).resolve("../package/dist"),
 		}),
