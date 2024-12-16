@@ -1,0 +1,33 @@
+---
+title: Welcome to URL122
+description: easily shorten urls
+template: splash
+hero:
+  tagline: Easily shorten urls
+  image:
+    file: ../../assets/URL122.png
+  actions:
+    - text: Get Started
+      link: /guides/basic/
+      icon: right-arrow
+    - text: Get Started with our Astro Integration
+      link: /guides/astro/
+      icon: right-arrow
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Next steps
+
+<CardGrid stagger>
+	<Card title="Update redirects" icon="pencil">
+		Easy to update, no finicky admin panel or APIs.
+	</Card>
+	<Card title="Add new pages" icon="add-document">
+		Add new pages in seconds (even faster with our [Astro integration](/guides/astro/)).
+	</Card>
+	<Card title="Configure" icon="setting">
+		redirect to any site, all from one config file.
+	</Card>
+</CardGrid>

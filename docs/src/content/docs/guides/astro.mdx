@@ -1,0 +1,89 @@
+---
+title: Astro Integration Guide
+description: A guide to setup URL122 with our Astro integration.
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+[Basic setup](/guides/basic) is easy, but our Astro integration makes it even easier.
+
+## 1 install
+
+<Tabs syncKey="packagemanager">
+  <TabItem label="npm">
+
+```bash
+npx astro add @url122/astro
+```
+
+  </TabItem>
+  <TabItem label="yarn">
+
+```bash
+yarn astro add @url122/astro
+```
+
+  </TabItem>
+  <TabItem label="pnpm">
+
+```bash
+pnpm astro add @url122/astro
+```
+
+  </TabItem>
+</Tabs>
+
+## configure
+
+In your `astro.config.mjs` file, add the following:
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import url122 from '@url122/astro';
+
+export default defineConfig({
+  site: 'https://example.com', // site MUST be defined else the integration will not run
+  integrations: [
+    url122({
+      prefix: 'abc'
+    })
+  ]
+})
+```
+
+For most sites this is all you need to do!
+
+__Configuration Options__
+
+```ts
+options: {
+    prefix?: string | undefined;
+    idPrefix?: string | undefined;
+    subPrefix?: string | undefined;
+    extraPages?: string[] | undefined;
+}
+```
+
+you MUST have prefix defined, it will become a required field in the next major version.
+
+idPrefix is deprecated and will be removed in the next major version, use prefix instead.
+
+subPrefix is the sub-prefix for your redirects, this is only needed if you are using a url122 index site to have a redirect.
+
+extraPages is an array of pages that you want to have redirects that are not static pages, as of now url122 only generates entries for static pages. any none-preloaded pages must be added to this array to have redirects generated for them.
+
+## How do I get my site on URL122?
+Please refer to the guide [here](/guides/basic#how-do-i-get-my-site-on-url122).
+
+
+## errors:
+
+### `The @url122/astro integration requires the `site` astro.config option. Skipping.`
+This error is thrown when the `site` option is not defined in your `astro.config.mjs` file.
+
+simply add the site option to your `astro.config.mjs` file.
+
+### `The @url122/astro integration requires the `prefix` astro.config option. Skipping.`
+This error is thrown when the `prefix` option is not defined in your `astro.config.mjs` file.
+
+simply add the prefix option to the url122 integration setting in your `astro.config.mjs` file.
