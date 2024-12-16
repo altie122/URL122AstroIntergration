@@ -5,14 +5,13 @@ import crypto from 'node:crypto';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
-export type SitemapOptions = {
-	idPrefix: string;
-};
-
 export const integration = defineIntegration({
 	name: "@url122/astro",
 	optionsSchema: z.object({
-		idPrefix: z.string().length(3),
+		prefix : z.string().length(3).optional(), /** Prefix for the id (eg. /bcu/{id}) */
+		idPrefix: z.string().length(3).optional(), /** Prefix for the id (eg. /bcu/{id}) | here for backwards compatibility w/ v1.0.0 | this will be removed in the next major release */
+		subPrefix: z.string().optional(), /** sub-prefix for the id (eg. /bcu/items/{id}) */
+		extraPages: z.array(z.string()).optional(), /** Extra pages to generate ids for (eg. https://bcuw.xyz/ (server generated page, not in normal url122.json)) */
 	}),
 	setup({options}) {
 		let config: AstroConfig;
@@ -27,12 +26,25 @@ export const integration = defineIntegration({
 							'The @url122/astro integration requires the `site` astro.config option. Skipping.',
 						);
 						return;
-					}
+					};
+					let prefix = options.prefix ?? options.idPrefix ?? undefined;
+					if (!prefix) {
+						logger.warn(
+							'The @url122/astro integration requires the `prefix` astro.config option. Skipping.',
+						);
+						return;
+					};
+					if (options.subPrefix) {
+						prefix += `/${options.subPrefix}`;
+					};
 					const site = config.site.endsWith("/") ? config.site.slice(0, -1) : config.site;
 					let idMap: { [key: string]: string }[]= [];
 					const allPages = pages.map((page) => `/${page.pathname}`);
 					logger.info("Generating URL122 ids...");
-					allPages.map((path) => idMap.push({[`${options.idPrefix}/${generateId(path)}`]: `${site}${path}`}));
+					allPages.map((path) => idMap.push({[`${prefix}/${generateId(path)}`]: `${site}${path}`}));
+					if (options.extraPages) {
+						options.extraPages.map((page) => site.startsWith("http") || site.startsWith("https") ? idMap.push({[`${prefix}/${generateId(page)}`]: `${page}`}) : idMap.push({[`${prefix}/${generateId(page)}`]: `${site}${page}`}));
+					}
 					const jsonString = JSON.stringify(idMap, null, 2);
 					logger.info("Writing URL122 ids to file...");
 					const outFile = fileURLToPath(new URL(`./\.well-known`, dir));

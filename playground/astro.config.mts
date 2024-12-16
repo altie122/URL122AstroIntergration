@@ -12,7 +12,8 @@ export default defineConfig({
 		tailwind(),
 		url122(
 			{
-				idPrefix: "exa"
+				idPrefix: "exa",
+				extraPages: ["https://example.com/extra-page", "/extra-page-2"],
 			}
 		),
 		hmrIntegration({
