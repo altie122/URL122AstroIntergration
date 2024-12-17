@@ -37,6 +37,11 @@ export const integration = defineIntegration({
 						);
 						return;
 					}
+					if (options.idPrefix) {
+						logger.warn(
+							"The `idPrefix` option is deprecated and will be removed in the next major release of @url122/astro. Please use `prefix` instead.",
+						);
+					}
 					let prefix = options.prefix ?? options.idPrefix ?? undefined;
 					if (!prefix) {
 						logger.warn(

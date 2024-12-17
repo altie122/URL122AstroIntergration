@@ -1,5 +1,11 @@
 # @url122/astro
 
+## 2.0.1
+
+### Patch Changes
+
+- Make a console warning if you are still using idPrefix
+
 ## 2.0.0
 
 ### Major Changes
